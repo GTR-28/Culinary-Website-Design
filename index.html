@@ -3,101 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Culinary Website Design - Professional Restaurant Websites</title>
-    <meta name="description" content="Professional custom website design for restaurants and food businesses. Clean, modern designs that showcase your brand and attract customers. Starting at $50.">
+    <title>Culinary Website Design - Professional Restaurant Website Solutions</title>
+    <meta name="description" content="Professional restaurant website design services. Custom websites for restaurants, cafes, and food businesses starting at $50. Responsive design, online ordering, and more.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a',
+                        secondary: '#1e40af', 
+                        accent: '#dc2626',
+                        success: '#16a34a'
+                    }
+                }
+            }
+        }
+    </script>
     
-    <!-- Custom CSS Variables and Styles -->
     <style>
-        :root {
-            --primary: #1e3a8a;
-            --secondary: #1e40af;
-            --accent: #ea580c;
-            --muted: #64748b;
-        }
-        
-        .bg-primary { background-color: var(--primary); }
-        .bg-secondary { background-color: var(--secondary); }
-        .bg-accent { background-color: var(--accent); }
-        .text-primary { color: var(--primary); }
-        .text-accent { color: var(--accent); }
-        .border-accent { border-color: var(--accent); }
-        
-        html { scroll-behavior: smooth; }
-        
-        .animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
         .hover-orange-yellow:hover {
-            color: #f59e0b;
-        }
-        
-        .gradient-orange {
-            background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
-        }
-        
-        .shadow-orange {
-            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
-        }
-        
-        .btn-primary {
-            background-color: var(--accent);
+            background: linear-gradient(135deg, #fed7aa 0%, #fde68a 100%);
+            transform: translateY(-2px);
             transition: all 0.3s ease;
         }
         
-        .btn-primary:hover {
-            background-color: #dc2626;
-            transform: scale(1.05);
-        }
-        
         .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .card-hover:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .rotate-180 {
+            transform: rotate(180deg);
         }
     </style>
 </head>
-<body class="font-sans antialiased bg-gray-50">
+<body class="min-h-screen bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <h1 class="text-xl font-bold text-primary">Culinary Website Design</h1>
-                        <p class="text-xs text-gray-600 font-medium">Bringing your restaurant to the next level</p>
+                        <h1 class="text-xl font-bold text-blue-800">Culinary Website Design</h1>
                     </div>
                 </div>
                 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#services" class="text-gray-600 hover:text-primary transition-colors px-3 py-2 text-sm font-medium">Services</a>
-                        <a href="#packages" class="text-gray-600 hover:text-primary transition-colors px-3 py-2 text-sm font-medium">Packages</a>
-                        <a href="#portfolio" class="text-gray-600 hover:text-primary transition-colors px-3 py-2 text-sm font-medium">Portfolio</a>
-                        <a href="#faq" class="text-gray-600 hover:text-primary transition-colors px-3 py-2 text-sm font-medium">FAQ</a>
-                        <a href="#contact" class="bg-accent hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Get Started</a>
+                        <button onclick="scrollToSection('services')" class="text-gray-600 hover:text-blue-800 transition-colors px-3 py-2 text-sm font-medium">
+                            Services
+                        </button>
+                        <button onclick="scrollToSection('packages')" class="text-gray-600 hover:text-blue-800 transition-colors px-3 py-2 text-sm font-medium">
+                            Packages
+                        </button>
+                        <button onclick="scrollToSection('portfolio')" class="text-gray-600 hover:text-blue-800 transition-colors px-3 py-2 text-sm font-medium">
+                            Portfolio
+                        </button>
+                        <button onclick="scrollToSection('faq')" class="text-gray-600 hover:text-blue-800 transition-colors px-3 py-2 text-sm font-medium">
+                            FAQ
+                        </button>
+                        <button onclick="scrollToSection('contact')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                            Get Started
+                        </button>
                     </div>
                 </div>
                 
                 <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-gray-600 hover:text-primary p-2">
+                    <button id="menu-toggle" onclick="toggleMobileMenu()" class="text-gray-600 hover:text-blue-800">
                         <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -111,18 +90,28 @@
             <!-- Mobile menu -->
             <div id="mobile-menu" class="md:hidden hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-                    <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary transition-colors">Services</a>
-                    <a href="#packages" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary transition-colors">Packages</a>
-                    <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary transition-colors">Portfolio</a>
-                    <a href="#faq" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary transition-colors">FAQ</a>
-                    <a href="#contact" class="bg-accent hover:bg-red-600 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors mt-2">Get Started</a>
+                    <button onclick="scrollToSection('services')" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-800 transition-colors w-full text-left">
+                        Services
+                    </button>
+                    <button onclick="scrollToSection('packages')" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-800 transition-colors w-full text-left">
+                        Packages  
+                    </button>
+                    <button onclick="scrollToSection('portfolio')" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-800 transition-colors w-full text-left">
+                        Portfolio
+                    </button>
+                    <button onclick="scrollToSection('faq')" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-800 transition-colors w-full text-left">
+                        FAQ
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="bg-red-600 hover:bg-red-700 text-white w-full mt-2 px-3 py-2 rounded-lg">
+                        Get Started
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-primary to-secondary text-white py-20">
+    <section class="bg-gradient-to-br from-blue-800 to-blue-700 text-white py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -133,9 +122,9 @@
                         I offer custom website design that helps you stand out, attract customers, and present your brand clearly online. Clean, modern, and easy-to-navigate sites without unnecessary clutter.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#packages" class="bg-accent hover:bg-red-600 text-white px-8 py-4 text-base font-semibold rounded-lg transition-colors text-center">
+                        <button onclick="scrollToSection('packages')" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-base font-semibold rounded-lg">
                             View Packages
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="hidden lg:block">
@@ -149,7 +138,7 @@
                             <div class="space-y-3">
                                 <div class="h-4 bg-gray-300 rounded w-3/4"></div>
                                 <div class="h-4 bg-gray-300 rounded w-1/2"></div>
-                                <div class="h-20 bg-primary rounded"></div>
+                                <div class="h-20 bg-blue-800 rounded"></div>
                                 <div class="grid grid-cols-3 gap-2">
                                     <div class="h-10 bg-gray-300 rounded"></div>
                                     <div class="h-10 bg-gray-300 rounded"></div>
@@ -173,7 +162,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="text-center p-6 rounded-xl bg-gray-50 hover-orange-yellow cursor-pointer card-hover">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="text-white h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
                         </svg>
@@ -183,7 +172,7 @@
                 </div>
                 
                 <div class="text-center p-6 rounded-xl bg-gray-50 hover-orange-yellow cursor-pointer card-hover">
-                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="text-white h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                         </svg>
@@ -193,7 +182,7 @@
                 </div>
                 
                 <div class="text-center p-6 rounded-xl bg-gray-50 hover-orange-yellow cursor-pointer card-hover">
-                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="text-white h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
                         </svg>
@@ -218,86 +207,70 @@
     <!-- Why Choose Section -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose Professional Website Design?</h2>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Attract More Customers</h3>
-                                <p class="text-gray-600">A professional website increases credibility and helps customers find you online</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Save Time</h3>
-                                <p class="text-gray-600">Focus on running your restaurant while I handle the technical details</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Stand Out</h3>
-                                <p class="text-gray-600">Get a unique design that sets you apart from competitors using generic templates</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Quick Turnaround</h3>
-                                <p class="text-gray-600">Get your website completed in about a week, not months</p>
-                            </div>
-                        </div>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose My Service?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Bringing your restaurant to the next level</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 bg-blue-800 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Fast Turnaround</h3>
+                    <p class="text-gray-600">Your website will be completed within one week, so you can start attracting customers quickly.</p>
                 </div>
                 
-                <div class="relative">
-                    <div class="bg-white rounded-2xl shadow-xl p-8">
-                        <div class="text-center">
-                            <div class="w-16 h-16 bg-gradient-to-br from-accent to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Boost Your Business</h3>
-                            <p class="text-gray-600 mb-6">Professional websites convert visitors into customers</p>
-                            <div class="space-y-2 text-left">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Online Visibility</span>
-                                    <span class="font-semibold text-accent">+150%</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Customer Inquiries</span>
-                                    <span class="font-semibold text-accent">+85%</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Professional Image</span>
-                                    <span class="font-semibold text-accent">+200%</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Affordable Pricing</h3>
+                    <p class="text-gray-600">Professional website design starting at just $50, with transparent pricing and no hidden fees.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Restaurant-Focused</h3>
+                    <p class="text-gray-600">Specialized in restaurant websites with features like menu display, online ordering, and local SEO.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Mobile Optimized</h3>
+                    <p class="text-gray-600">Your website will look perfect on all devices - phones, tablets, and desktops.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Ongoing Support</h3>
+                    <p class="text-gray-600">$4.99/month includes hosting, domain, maintenance, and updates to keep your site running smoothly.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">SEO Ready</h3>
+                    <p class="text-gray-600">Built with search engine optimization in mind to help local customers find your restaurant online.</p>
                 </div>
             </div>
         </div>
@@ -308,343 +281,242 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Choose Your Package</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Simple, transparent pricing for professional restaurant websites
-                </p>
+                <p class="text-lg text-gray-600">Professional website solutions tailored to your restaurant's needs</p>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- Standard Package -->
-                <div class="card-hover bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
+                <div class="bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8 relative hover-orange-yellow cursor-pointer">
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Standard Package</h3>
-                        <div class="text-4xl font-bold text-primary mb-2">$50</div>
-                        <p class="text-gray-600">Perfect for small restaurants</p>
+                        <p class="text-gray-600 mb-6">Perfect for getting your restaurant online quickly</p>
+                        <div class="text-lg font-semibold text-gray-600 mb-2">Starting at</div>
+                        <div class="text-4xl font-bold text-blue-800 mb-2">$50</div>
+                        <div class="text-sm text-gray-500">+ $4.99/month hosting & domain</div>
                     </div>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">5-page website</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">Functional website (basic features)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Mobile responsive design</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">Responsive design (works on phones and desktops)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Basic menu display</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">Custom asset design: 1 unique design element</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Contact information</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">1 revision allowed</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Basic SEO setup</span>
-                        </li>
-                    </ul>
+                            <span class="text-gray-700">Essential pages (Home, Menu, About, Contact)</span>
+                        </div>
+                    </div>
                     
-                    <a href="#contact" class="w-full bg-primary hover:bg-blue-800 text-white py-3 rounded-lg font-semibold transition-colors block text-center">
+                    <button onclick="scrollToSection('contact')" class="w-full bg-blue-800 hover:bg-blue-900 text-white py-4 text-base font-semibold rounded-lg">
                         Get Started
-                    </a>
+                    </button>
                 </div>
-
+                
                 <!-- Premium Package -->
-                <div class="card-hover bg-white rounded-2xl shadow-xl border-2 border-accent p-8 relative">
+                <div class="bg-white rounded-2xl shadow-xl border-2 border-red-600 p-8 relative hover-orange-yellow cursor-pointer">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="bg-accent text-white px-4 py-1 rounded-full text-sm font-medium">Most Popular</span>
+                        <span class="bg-red-600 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span>
                     </div>
                     
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium Package</h3>
-                        <div class="text-4xl font-bold text-accent mb-2">$100</div>
-                        <p class="text-gray-600">For growing restaurants</p>
+                        <p class="text-gray-600 mb-6">Complete solution with online ordering</p>
+                        <div class="text-lg font-semibold text-gray-600 mb-2">Starting at</div>
+                        <div class="text-4xl font-bold text-red-600 mb-2">$100</div>
+                        <div class="text-sm text-gray-500">+ $4.99/month hosting & domain</div>
                     </div>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Everything in Standard</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">Functional website (more advanced features)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Advanced menu with photos</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">Responsive design</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Online reservation system</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">Custom asset design: 3 unique design elements</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Photo gallery</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700 font-semibold">Online order integration</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Social media integration</span>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <span class="text-gray-700">2 revisions allowed</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="text-green-600 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
-                            <span class="text-gray-700">Advanced SEO optimization</span>
-                        </li>
-                    </ul>
+                            <span class="text-gray-700">Email/phone order notifications</span>
+                        </div>
+                    </div>
                     
-                    <a href="#contact" class="w-full bg-accent hover:bg-red-600 text-white py-3 rounded-lg font-semibold transition-colors block text-center">
+                    <button onclick="scrollToSection('contact')" class="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-base font-semibold rounded-lg">
                         Get Started
-                    </a>
+                    </button>
                 </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <p class="text-gray-600 mb-4">
-                    <strong>Ongoing hosting:</strong> $4.99/month includes domain, hosting, and basic maintenance
-                </p>
-                <p class="text-sm text-gray-500">
-                    All websites completed in approximately one week
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section with UrbanPie Co. Example -->
+    <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Example of What to Expect</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    See the quality and functionality you'll receive with your restaurant website
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Here's a live example of the quality and functionality you can expect from your custom restaurant website. This is a fully functional demo that showcases the professional design and features I provide.
                 </p>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
-                <div class="bg-gradient-to-r from-primary to-secondary p-8 text-center">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">UrbanPie Co. Restaurant</h3>
-                    <p class="text-orange-100 text-center text-lg">Premium Restaurant Website - Live Example</p>
+            <!-- UrbanPie Co. Demo -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-orange-800 to-orange-900 text-white p-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                        <div class="ml-4 text-sm font-medium">urbanpie.co - Example Restaurant Website</div>
+                    </div>
                 </div>
-                
-                <div class="bg-gray-100 relative overflow-hidden max-h-[600px] overflow-y-auto">
-                    <!-- Urban Pie Co. Website Embedded -->
-                    <div class="font-sans antialiased bg-white">
-                        <!-- UrbanPie Navigation -->
-                        <nav class="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <div class="flex justify-between items-center h-16">
-                                    <div class="flex items-center space-x-3">
-                                        <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center relative">
-                                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                                            </svg>
-                                            <div class="absolute -top-1 -right-1 w-4 h-4">
-                                                <div class="w-1 h-3 bg-yellow-400 rounded-full opacity-70 absolute left-0"></div>
-                                                <div class="w-1 h-2 bg-yellow-400 rounded-full opacity-50 absolute left-1"></div>
-                                                <div class="w-1 h-1 bg-yellow-400 rounded-full opacity-30 absolute left-2"></div>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="font-bold text-gray-900 text-sm leading-tight">Urban Pie Co.</div>
-                                            <div class="text-xs text-gray-500 font-medium">Est. 2023</div>
-                                        </div>
-                                    </div>
-                                    <div class="hidden md:flex items-center space-x-8">
-                                        <a href="#menu" class="font-medium text-gray-900 hover:text-red-600 transition-colors">Menu</a>
-                                        <a href="#about" class="font-medium text-gray-900 hover:text-red-600 transition-colors">About</a>
-                                        <a href="#gallery" class="font-medium text-gray-900 hover:text-red-600 transition-colors">Gallery</a>
-                                        <a href="#contact" class="font-medium text-gray-900 hover:text-red-600 transition-colors">Contact</a>
-                                        <button class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors">Order Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </nav>
 
-                        <!-- UrbanPie Hero -->
-                        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1590947132387-155cc02f3212?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"></div>
-                            <div class="absolute inset-0 bg-gray-900/60"></div>
-                            
-                            <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
-                                <div class="mb-8">
-                                    <h1 class="font-black text-5xl md:text-7xl text-white mb-4 leading-tight">Urban Pie Co.</h1>
-                                    <p class="text-3xl md:text-4xl text-yellow-400 mb-6" style="font-family: cursive;">Crafted with Fire, Served with Love</p>
-                                    <p class="text-xl md:text-2xl text-white/90 font-medium mb-8">Baked from the block, for the block.</p>
-                                </div>
-                                
-                                <div class="flex justify-center">
-                                    <button class="bg-red-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-red-700 transition-all flex items-center">
-                                        <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 716.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0720 13a7.975 7.975 0 01-2.343 5.657z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
+                <!-- UrbanPie Demo Content -->
+                <div class="bg-gray-900 text-white min-h-screen">
+                    <!-- Demo Navigation -->
+                    <nav class="bg-black/50 backdrop-blur-sm p-4">
+                        <div class="max-w-6xl mx-auto flex justify-between items-center">
+                            <div class="text-2xl font-bold text-orange-400">UrbanPie Co.</div>
+                            <div class="hidden md:flex space-x-6">
+                                <a href="#" class="hover:text-orange-400 transition-colors">Menu</a>
+                                <a href="#" class="hover:text-orange-400 transition-colors">About</a>
+                                <a href="#" class="hover:text-orange-400 transition-colors">Location</a>
+                                <a href="#" class="hover:text-orange-400 transition-colors">Contact</a>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <!-- Demo Hero Section -->
+                    <section class="relative bg-gradient-to-br from-orange-800 to-orange-900 py-20">
+                        <div class="max-w-6xl mx-auto px-6 text-center">
+                            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                                Baked from the <span class="text-orange-300">block</span>, for the <span class="text-orange-300">block</span>
+                            </h1>
+                            <p class="text-xl mb-8 text-orange-100 max-w-2xl mx-auto">
+                                Authentic New York-style pizza made with passion and served with pride in the heart of the city.
+                            </p>
+                            <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                                Order Hot & Fresh
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Demo Features -->
+                    <section class="py-16 bg-gray-800">
+                        <div class="max-w-6xl mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-12">Why Choose UrbanPie?</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                         </svg>
-                                        Order Hot & Fresh
-                                    </button>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2">Fresh Ingredients</h3>
+                                    <p class="text-gray-300">Made daily with the finest ingredients</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2">Family Owned</h3>
+                                    <p class="text-gray-300">Three generations of pizza excellence</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+                                    <p class="text-gray-300">Hot pizza to your door in 30 minutes</p>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
-                        <!-- UrbanPie Menu Preview -->
-                        <section class="py-12 bg-white">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <div class="text-center mb-8">
-                                    <h2 class="font-black text-3xl text-gray-900 mb-2">Our Fire-Forged Favorites</h2>
-                                    <p class="text-xl text-red-600 mb-4" style="font-family: cursive;">Every slice a city story</p>
+                    <!-- Demo Gallery -->
+                    <section class="py-16 bg-gray-900">
+                        <div class="max-w-6xl mx-auto px-6">
+                            <h2 class="text-3xl font-bold text-center mb-12">Gallery</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-gradient-to-br from-orange-600 to-red-600 rounded-lg h-48 flex items-center justify-center">
+                                    <span class="text-white font-semibold">Margherita Special</span>
                                 </div>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                    <!-- Sample Pizza Cards -->
-                                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:transform hover:-translate-y-2 transition-all">
-                                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="The Firestarter" class="w-full h-32 object-cover" />
-                                        <div class="p-4">
-                                            <h3 class="font-bold text-lg text-gray-900">The Firestarter</h3>
-                                            <p class="text-gray-600 text-sm mb-2">Spicy pepperoni, jalapeños, sriracha drizzle</p>
-                                            <div class="flex items-center justify-between">
-                                                <span class="font-bold text-xl text-gray-900">$16</span>
-                                                <button class="bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:transform hover:-translate-y-2 transition-all">
-                                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="City Margherita" class="w-full h-32 object-cover" />
-                                        <div class="p-4">
-                                            <h3 class="font-bold text-lg text-gray-900">City Margherita</h3>
-                                            <p class="text-gray-600 text-sm mb-2">Fresh mozz, basil, fire-roasted tomatoes</p>
-                                            <div class="flex items-center justify-between">
-                                                <span class="font-bold text-xl text-gray-900">$14</span>
-                                                <button class="bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:transform hover:-translate-y-2 transition-all">
-                                        <img src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Brickhouse BBQ" class="w-full h-32 object-cover" />
-                                        <div class="p-4">
-                                            <h3 class="font-bold text-lg text-gray-900">Brickhouse BBQ</h3>
-                                            <p class="text-gray-600 text-sm mb-2">Pulled chicken, BBQ sauce, red onions</p>
-                                            <div class="flex items-center justify-between">
-                                                <span class="font-bold text-xl text-gray-900">$17</span>
-                                                <button class="bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:transform hover:-translate-y-2 transition-all">
-                                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="The Commuter" class="w-full h-32 object-cover" />
-                                        <div class="p-4">
-                                            <h3 class="font-bold text-lg text-gray-900">The Commuter</h3>
-                                            <p class="text-gray-600 text-sm mb-2">Personal size, 3 toppings, ready in 5 min</p>
-                                            <div class="flex items-center justify-between">
-                                                <span class="font-bold text-xl text-gray-900">$12</span>
-                                                <button class="bg-red-600 text-white px-3 py-1 rounded-full text-sm hover:bg-red-700">Add to Cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="bg-gradient-to-br from-yellow-600 to-orange-600 rounded-lg h-48 flex items-center justify-center">
+                                    <span class="text-white font-semibold">Pepperoni Classic</span>
+                                </div>
+                                <div class="bg-gradient-to-br from-green-600 to-yellow-600 rounded-lg h-48 flex items-center justify-center">
+                                    <span class="text-white font-semibold">Veggie Supreme</span>
                                 </div>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
+
+                    <!-- Demo Footer -->
+                    <footer class="bg-black py-8">
+                        <div class="max-w-6xl mx-auto px-6 text-center">
+                            <div class="text-2xl font-bold text-orange-400 mb-4">UrbanPie Co.</div>
+                            <p class="text-gray-400 mb-4">123 Pizza Street, New York, NY 10001</p>
+                            <p class="text-gray-400">(555) 123-PIZZA</p>
+                        </div>
+                    </footer>
                 </div>
-                
-                <div class="p-8 space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="font-semibold text-lg text-gray-900 mb-3">Key Features Demonstrated:</h4>
-                            <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Professional navigation with custom logo
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Compelling hero section with clear messaging
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Interactive menu with appetizing photos
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Mobile-responsive design
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold text-lg text-gray-900 mb-3">What You Get:</h4>
-                            <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Custom design matching your brand
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Professional photography integration
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Fast loading and SEO optimized
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    Easy content management
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            </div>
 
-                    <div class="border-t pt-6">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                            <div>
-                                <p class="text-gray-700 font-medium">
-                                    <strong>Interactive Demo Above:</strong> 
-                                    <span class="text-orange-600 ml-2">Scroll through the live restaurant website example</span>
-                                </p>
-                                <p class="text-gray-500 mt-1">
-                                    This website was built with our Premium package and represents the quality you can expect.
-                                </p>
-                            </div>
-                            <a href="#contact" class="bg-accent hover:bg-red-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                                Start Your Project
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mt-8">
+                <p class="text-gray-600 mb-4">
+                    This is just one example of the professional, fully-functional websites I create for restaurants.
+                </p>
+                <button onclick="scrollToSection('contact')" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold">
+                    Get Your Restaurant Website
+                </button>
             </div>
         </div>
     </section>
@@ -654,93 +526,79 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-                <p class="text-lg text-gray-600">
-                    Get answers to common questions about restaurant website design
-                </p>
+                <p class="text-lg text-gray-600">Everything you need to know about my restaurant website design service</p>
             </div>
 
-            <div class="space-y-6">
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <button class="w-full text-left" onclick="toggleFaq(this)">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-900">How long does it take to build my website?</h3>
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-lg">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg transition-colors">
+                        <span class="font-semibold text-gray-900">How long does it take to build my website?</span>
+                        <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </button>
-                    <div class="mt-4 text-gray-600 hidden">
-                        <p>Most restaurant websites are completed within one week. This includes design, development, content integration, and testing. The timeline may vary slightly depending on how quickly you provide content and feedback.</p>
+                    <div class="hidden px-6 pb-4">
+                        <p class="text-gray-600">Most websites are completed within one week. The timeline can vary slightly depending on the complexity of your requirements and how quickly you provide the necessary content and feedback.</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <button class="w-full text-left" onclick="toggleFaq(this)">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-900">What's included in the monthly hosting fee?</h3>
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
+                <div class="bg-gray-50 rounded-lg">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg transition-colors">
+                        <span class="font-semibold text-gray-900">What's included in the monthly fee?</span>
+                        <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </button>
-                    <div class="mt-4 text-gray-600 hidden">
-                        <p>The $4.99/month fee covers domain registration, reliable hosting, security updates, and basic maintenance. This ensures your website stays online, secure, and running smoothly without any technical worries on your end.</p>
+                    <div class="hidden px-6 pb-4">
+                        <p class="text-gray-600">The $4.99/month fee covers your domain name, web hosting, security updates, maintenance, and basic content updates. This ensures your website stays online, secure, and up-to-date.</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <button class="w-full text-left" onclick="toggleFaq(this)">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-900">Can I update my menu and content myself?</h3>
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
+                <div class="bg-gray-50 rounded-lg">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg transition-colors">
+                        <span class="font-semibold text-gray-900">Can I update my menu and content myself?</span>
+                        <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </button>
-                    <div class="mt-4 text-gray-600 hidden">
-                        <p>Yes! I build websites with easy-to-use content management systems that allow you to update menus, photos, and basic content yourself. I also provide training and support to help you manage your site confidently.</p>
+                    <div class="hidden px-6 pb-4">
+                        <p class="text-gray-600">Yes! Your website will be built with an easy-to-use admin panel where you can update your menu, prices, hours, and other content. I'll provide training and support to help you manage your site.</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <button class="w-full text-left" onclick="toggleFaq(this)">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-900">Do you provide the photos for my website?</h3>
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
+                <div class="bg-gray-50 rounded-lg">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg transition-colors">
+                        <span class="font-semibold text-gray-900">What if I need changes after my website is live?</span>
+                        <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </button>
-                    <div class="mt-4 text-gray-600 hidden">
-                        <p>You provide your own photos of food, restaurant interior, and team. I can help optimize and edit them for web use. If you need professional photography, I can recommend local photographers who specialize in restaurant photography.</p>
+                    <div class="hidden px-6 pb-4">
+                        <p class="text-gray-600">Minor updates and content changes are included in your monthly maintenance fee. For larger design changes or new features, I offer additional services at competitive rates.</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <button class="w-full text-left" onclick="toggleFaq(this)">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-900">Will my website work on mobile phones?</h3>
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
+                <div class="bg-gray-50 rounded-lg">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg transition-colors">
+                        <span class="font-semibold text-gray-900">Do you provide online ordering for the Premium package?</span>
+                        <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </button>
-                    <div class="mt-4 text-gray-600 hidden">
-                        <p>Absolutely! All websites are designed to be fully responsive, meaning they automatically adapt to look and function perfectly on phones, tablets, and desktop computers. Most restaurant customers browse on mobile, so this is essential.</p>
+                    <div class="hidden px-6 pb-4">
+                        <p class="text-gray-600">Yes! The Premium package includes a fully integrated online ordering system where customers can place orders directly through your website. Orders are sent to you via email and/or phone notification.</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <button class="w-full text-left" onclick="toggleFaq(this)">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-lg font-semibold text-gray-900">What if I'm not happy with the design?</h3>
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
+                <div class="bg-gray-50 rounded-lg">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg transition-colors">
+                        <span class="font-semibold text-gray-900">What do I need to provide to get started?</span>
+                        <svg class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
                     </button>
-                    <div class="mt-4 text-gray-600 hidden">
-                        <p>I work closely with you throughout the design process and include revisions to ensure you're completely satisfied. I want you to love your website, so I'll make adjustments until it meets your expectations and represents your restaurant perfectly.</p>
+                    <div class="hidden px-6 pb-4">
+                        <p class="text-gray-600">I'll need your restaurant's basic information, menu items, photos of your food, your logo (if you have one), and any specific preferences for colors or style. I'll guide you through the entire process.</p>
                     </div>
                 </div>
             </div>
@@ -756,7 +614,7 @@
             </div>
             
             <div class="bg-gray-50 rounded-2xl p-8">
-                <form class="space-y-6" onsubmit="handleAdvancedSubmit(event)">
+                <form class="space-y-6" onsubmit="handleSubmit(event)">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="companyName" class="block text-sm font-semibold text-gray-700 mb-2">Company Name *</label>
@@ -765,7 +623,7 @@
                                 id="companyName" 
                                 name="companyName" 
                                 required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none transition-colors"
                                 placeholder="Your restaurant name"
                             >
                         </div>
@@ -777,7 +635,7 @@
                                 id="contactEmail" 
                                 name="contactEmail" 
                                 required 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none transition-colors"
                                 placeholder="your@email.com"
                             >
                         </div>
@@ -789,7 +647,7 @@
                             id="packageInterest" 
                             name="packageInterest" 
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none transition-colors"
                         >
                             <option value="">Select a package</option>
                             <option value="Standard Package ($50)">Standard Package ($50)</option>
@@ -806,7 +664,7 @@
                             name="menuItems" 
                             rows="3" 
                             required 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors resize-none"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none transition-colors resize-none"
                             placeholder="e.g., Appetizers, Main Courses, Desserts, Beverages, Signature Pizzas, etc."
                         ></textarea>
                     </div>
@@ -819,7 +677,7 @@
                             name="aboutRestaurant" 
                             rows="4" 
                             required 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors resize-none"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none transition-colors resize-none"
                             placeholder="Describe your restaurant's cuisine type, atmosphere, target customers, and unique selling points..."
                         ></textarea>
                     </div>
@@ -834,7 +692,7 @@
                                 <select 
                                     id="hasLogo" 
                                     name="hasLogo" 
-                                    class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                                    class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none transition-colors"
                                     onchange="toggleLogoUpload(this.value)"
                                 >
                                     <option value="">Do you have a logo?</option>
@@ -845,7 +703,7 @@
                             </div>
                             
                             <div id="logo-upload-section" class="hidden">
-                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-accent transition-colors">
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-red-600 transition-colors">
                                     <input 
                                         type="file" 
                                         id="logoFile" 
@@ -859,7 +717,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                                         </svg>
                                         <p class="mt-2 text-sm text-gray-600">
-                                            <span class="font-medium text-accent">Click to upload</span> or drag and drop
+                                            <span class="font-medium text-red-600">Click to upload</span> or drag and drop
                                         </p>
                                         <p class="text-xs text-gray-500">PNG, JPG, SVG up to 10MB</p>
                                     </label>
@@ -886,7 +744,7 @@
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Menu Photos</label>
                         <p class="text-sm text-gray-500 mb-3">Upload photos of your best dishes to showcase on your website</p>
                         
-                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-accent transition-colors">
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-red-600 transition-colors">
                             <input 
                                 type="file" 
                                 id="menuPhotos" 
@@ -901,7 +759,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                 </svg>
                                 <p class="mt-2 text-sm text-gray-600">
-                                    <span class="font-medium text-accent">Click to upload</span> or drag and drop
+                                    <span class="font-medium text-red-600">Click to upload</span> or drag and drop
                                 </p>
                                 <p class="text-xs text-gray-500">Multiple images - PNG, JPG up to 10MB each</p>
                             </label>
@@ -919,7 +777,7 @@
                             id="additionalInfo" 
                             name="additionalInfo" 
                             rows="3" 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors resize-none"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-red-600 outline-none transition-colors resize-none"
                             placeholder="Special features, integrations, design preferences, timeline requirements, etc."
                         ></textarea>
                     </div>
@@ -927,7 +785,7 @@
                     <div>
                         <button 
                             type="submit" 
-                            class="w-full bg-accent hover:bg-red-600 text-white py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50"
+                            class="w-full bg-red-600 hover:bg-red-700 text-white py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50"
                             id="submit-btn"
                         >
                             Submit Project Inquiry
@@ -962,46 +820,44 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-12">
+    <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Culinary Website Design</h3>
-                    <p class="text-blue-200 mb-4">
-                        Professional website design for restaurants and food businesses. 
-                        Bringing your restaurant to the next level.
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">Culinary Website Design</h3>
+                    <p class="text-gray-300 mb-4">
+                        Professional website design services specifically for restaurants, cafes, and food businesses. 
+                        Clean, modern, and conversion-focused designs that help you attract more customers.
                     </p>
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-blue-200">
-                        <li>Custom Website Design</li>
-                        <li>Mobile Responsive Development</li>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Restaurant Website Design</li>
+                        <li>Online Ordering Systems</li>
+                        <li>Menu Management</li>
                         <li>SEO Optimization</li>
-                        <li>Menu Integration</li>
-                        <li>Ongoing Maintenance</li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold mb-4">Contact</h4>
-                    <div class="space-y-2 text-blue-200">
-                        <p>luke@culinarywebdesign.com</p>
-                        <p>(555) 123-CHEF</p>
-                        <p>Response within 24 hours</p>
-                    </div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>luke@culinarywebdesign.com</li>
+                        <li>(555) 123-CHEF</li>
+                        <li>Response within 24 hours</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="border-t border-blue-600 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-blue-200 text-sm">
-                    © 2024 Culinary Website Design. Professional restaurant websites.
-                </p>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 text-sm">
+                    Professional restaurant website design services
+                </div>
                 <button 
-                    id="developer-access-btn"
-                    onclick="promptDeveloperAccess()"
-                    class="text-xs text-blue-300 hover:text-white transition-colors mt-4 md:mt-0"
+                    onclick="promptDeveloperAccess()" 
+                    class="mt-4 md:mt-0 text-xs text-gray-500 hover:text-gray-400 transition-colors"
                 >
                     Developer Access
                 </button>
@@ -1009,7 +865,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         // Global variables for file storage
         let logoImageData = '';
@@ -1033,6 +888,19 @@
             
             content.classList.toggle('hidden');
             icon.classList.toggle('rotate-180');
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
         }
 
         // Toggle logo upload section
@@ -1151,8 +1019,8 @@
             updateMenuPhotosPreview();
         }
 
-        // Enhanced form submission
-        function handleAdvancedSubmit(event) {
+        // Form submission
+        function handleSubmit(event) {
             event.preventDefault();
             
             const submitBtn = document.getElementById('submit-btn');
@@ -1174,7 +1042,7 @@
                 submittedAt: new Date().toISOString()
             };
 
-            // Simulate submission (in real implementation, this would send to your backend)
+            // Simulate submission
             setTimeout(() => {
                 alert('Thank you for your detailed inquiry! I\'ll review your information and get back to you within 24 hours with a comprehensive proposal.');
                 
@@ -1197,89 +1065,11 @@
             const passcode = prompt('Passcode:');
             
             if (userId === '9320' && passcode === '#luke28018') {
-                window.location.href = '/dev-dashboard';
+                alert('Developer access would redirect to admin dashboard.');
             } else {
                 alert('Invalid credentials');
             }
         }
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                toggleMobileMenu();
-            });
-        });
-
-        // Drag and drop functionality for file uploads
-        function setupDragAndDrop() {
-            const logoUpload = document.querySelector('#logo-upload-section .border-dashed');
-            const menuUpload = document.querySelector('#menuPhotos').closest('.border-dashed');
-
-            // Logo upload drag and drop
-            if (logoUpload) {
-                logoUpload.addEventListener('dragover', function(e) {
-                    e.preventDefault();
-                    this.classList.add('border-accent', 'bg-accent/5');
-                });
-
-                logoUpload.addEventListener('dragleave', function(e) {
-                    e.preventDefault();
-                    this.classList.remove('border-accent', 'bg-accent/5');
-                });
-
-                logoUpload.addEventListener('drop', function(e) {
-                    e.preventDefault();
-                    this.classList.remove('border-accent', 'bg-accent/5');
-                    
-                    const files = e.dataTransfer.files;
-                    if (files.length > 0) {
-                        document.getElementById('logoFile').files = files;
-                        handleLogoUpload({target: {files: files}});
-                    }
-                });
-            }
-
-            // Menu photos drag and drop
-            if (menuUpload) {
-                menuUpload.addEventListener('dragover', function(e) {
-                    e.preventDefault();
-                    this.classList.add('border-accent', 'bg-accent/5');
-                });
-
-                menuUpload.addEventListener('dragleave', function(e) {
-                    e.preventDefault();
-                    this.classList.remove('border-accent', 'bg-accent/5');
-                });
-
-                menuUpload.addEventListener('drop', function(e) {
-                    e.preventDefault();
-                    this.classList.remove('border-accent', 'bg-accent/5');
-                    
-                    const files = e.dataTransfer.files;
-                    if (files.length > 0) {
-                        document.getElementById('menuPhotos').files = files;
-                        handleMenuPhotosUpload({target: {files: files}});
-                    }
-                });
-            }
-        }
-
-        // Initialize drag and drop when page loads
-        document.addEventListener('DOMContentLoaded', setupDragAndDrop);
     </script>
 </body>
 </html>
